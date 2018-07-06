@@ -4,18 +4,17 @@
 <head>
   <meta charset="UTF-8">
   <title>information retrieval</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"> -->
   <link rel="stylesheet" href="{{ url_for('static', filename='web.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="{{ url_for('static', filename='js/jquery.min.js')}}"></script>
+  <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
   <script src="{{ url_for('static', filename='js/slick.min.js') }}"></script>
   <script src="{{ url_for('static', filename='js/myscript.js') }}"></script>
   <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='fonts/font-awesome.min.css') }}">
   <style>
     * {
       box-sizing: border-box;
@@ -140,7 +139,7 @@
             <div class="clearfix group-head">
               <div>
                 <h2 class='limitWord title '>
-                  <a>{{ result['title'][0] }}</a>
+                  <a href="{{result['link'][0]}}" target="blank_">{{ result['title'][0] }}</a>
                 </h2>
                 <h2 class='limitWord link '>
                   <a>{{ result['link'][0] }}</a>
@@ -274,7 +273,7 @@
 
       jQuery.ajax({
         type: 'GET',
-        url: 'http://localhost:5000/query?a=' + query
+        url: 'http://192.168.0.186:5000/query?a=' + query
       }).done(function (data) {
         console.log(data)
 

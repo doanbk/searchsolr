@@ -7,7 +7,7 @@ from flask_paginate import Pagination, get_page_args
 from flask import request
 import json
 import pypyodbc
-from connectDB import select_history_query, insert_query
+from connectDB import select_history_query, insert_query,update_count_query
 import pysolr
 
 
@@ -33,7 +33,8 @@ def fetchQuery(result=[]):
 def index(result=""):
     if request.args.get('mail', None):
         result = request.args['mail']
-        insert_query(result)    
+        insert_query(result)
+        update_count_query(result)  
     results = solr.search(result,rows=100)
     if len(results)==0:
         results= ""
